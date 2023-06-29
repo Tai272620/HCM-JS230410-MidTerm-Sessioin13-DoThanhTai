@@ -30,7 +30,7 @@ function ModalTask(props) {
   }
 
   const notify = () => {
-    toast.success('This is a success toast!', {
+    toast.success('Add Task success!', {
       position: 'top-right',
     });
   };
