@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import { AddTask } from '../redux/todoSlice';
 import { randomId } from '@mieuteacher/meomeojs';
+import toast, { Toaster } from 'react-hot-toast';
 
 function ModalTask(props) {
   const [show, setShow] = useState(false);
@@ -17,9 +18,22 @@ function ModalTask(props) {
   const dispatch = useDispatch();
 
   const handleAddTask = ({ id, task, status, time }) => {
-    dispatch(AddTask({ id, task, status, time: getCurrentTime()}))
-    setTask("") 
+    if (task !== "") {
+      dispatch(AddTask({ id, task, status, time: getCurrentTime() }))
+      setTask("")
+      notify()
+      handleClose()
+    } else {
+      alert("Please input task?")
+    }
+
   }
+
+  const notify = () => {
+    toast.success('This is a success toast!', {
+      position: 'top-right',
+    });
+  };
 
   function getCurrentTime() {
     var date = new Date();
@@ -27,7 +41,7 @@ function ModalTask(props) {
     var minutes = date.getMinutes();
     var ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
-    hours = hours ? hours : 12; 
+    hours = hours ? hours : 12;
     var currentTime = hours + ":" + (minutes < 10 ? "0" + minutes : minutes) + " " + ampm + " " + date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
     return currentTime;
   }
@@ -72,7 +86,7 @@ function ModalTask(props) {
               Cancel
             </Button>
             <Button variant="primary" onClick={() => {
-              handleClose()
+              // handleClose()
               if (status === "Incomplete") {
                 handleAddTask({ id: randomId(), task: task, status: false })
                 setStatus("Incomplete")
@@ -92,7 +106,7 @@ function ModalTask(props) {
           <option value={false}>Incomplete</option>
         </select>
       </div>
-
+      <Toaster />
     </div>
   );
 }
