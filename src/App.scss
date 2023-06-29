@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.addTodo-container {
+  margin-bottom: 20px;
+  h1 {
+    text-align: center;
+  }
+  .addTodo {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.task-container {
+  background-color: #e2e6f5;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  // border: 1px solid black;
+  background-color: #fff;
+  align-items: center;
+  padding: 15px;
+  width: 95%;
+  margin: 20px auto;
+  border-radius: 10px;
+
+  .task-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    width: 20%;
+    p {
+      margin-bottom: 0;
+    }
+    .check {
+      width: 30px;
+    }
+  }
+
+  .task-right {
+    display: flex;
+    align-items: center;
+    // border: 1px solid black;
+    width: 10%;
+    justify-content: space-around;
+
+    button {
+      border: none;
+    }
+    .delete-btn {
+      display: flex;
+      align-items: center;
+      padding: 9px;
+
+    }
+    .edit-btn {
+      // background-color: #f0f0f0 !important;
+    }
+  }
+}
+
+.noTask {
+  text-align: center;
+  font-weight: bold;
+}
+
+.select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.seclect-filter {
+  border-radius: 5px;
+}
